@@ -13,7 +13,7 @@ async def on_ready():
 
 
 @bot.command()
-async def say(ctx, channel, *, text):
+async def say(ctx: commands.Context, channel, *, text: str):
     await ctx.message.delete()
 
     channel = ctx.message.channel_mentions[0]
