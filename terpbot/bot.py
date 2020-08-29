@@ -4,6 +4,8 @@ import discord
 from random_word import RandomWords
 from discord.ext import commands
 
+from secrets import get_token
+
 bot = commands.Bot('-')
 
 
@@ -65,4 +67,4 @@ async def story(ctx: commands.Context):
     )
 
 
-bot.run('NzQ3NTg2MjEwMTY3MzkwMzI5.X0RB6Q.Y2QJDVtXD7dCiENa_HkgNC1BxTU')
+bot.run(get_token())

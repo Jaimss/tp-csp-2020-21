@@ -1,5 +1,6 @@
-import json
+i = input("Input: ")
 
-with open('names.json') as f:
-    j = json.load(f)
-print(j.get('1'))
+if i.lower() == "a" or "b":
+    print("ab")
+else:
+    print("d")
