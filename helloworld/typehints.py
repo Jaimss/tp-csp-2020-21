@@ -3,4 +3,3 @@ def fun(a: int) -> int:
 
 
 x: int = fun(3)
-print(x.__add__(3))

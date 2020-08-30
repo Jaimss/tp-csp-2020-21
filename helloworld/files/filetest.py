@@ -1,2 +1,6 @@
-x = 100_000_000
-print(x)
+import json
+
+with (open('names.json')) as f:
+    j = json.load(f)
+
+print(j)
