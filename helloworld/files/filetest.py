@@ -1,6 +1,2 @@
-i = input("Input: ")
-
-if i.lower() == "a" or "b":
-    print("ab")
-else:
-    print("d")
+x = 100_000_000
+print(x)
