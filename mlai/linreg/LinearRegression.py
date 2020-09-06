@@ -5,7 +5,7 @@ import sklearn
 from linreg.methods import (load_model, show_plot)
 
 # read the data from the csv and load it into what we need
-data = pd.read_csv('student-mat.csv', sep=';')
+data = pd.read_csv('./student-mat.csv', sep=';')
 data = data[["G1", "G2", "G3", "studytime", "failures", "absences"]]
 
 # we are predicting G3
