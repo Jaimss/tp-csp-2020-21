@@ -19,10 +19,8 @@ async def on_raw_reaction_add(payload: RawReactionActionEvent):
     channel = await bot.fetch_channel(payload.channel_id)
     message = await channel.fetch_message(payload.message_id)
     if message.author.id == 753351906608283678:
-        print('ret')
         return
     if str(payload.emoji) != '🍉':
-        print('her')
         return
     with open('data.json', 'r') as f:
         data = json.load(f)
