@@ -18,12 +18,12 @@ async def on_ready():
 async def on_raw_reaction_add(payload: RawReactionActionEvent):
     channel = await bot.fetch_channel(payload.channel_id)
     message = await channel.fetch_message(payload.message_id)
+    if message.author.id == 753351906608283678:
+        return
     if payload.user_id == message.author.id:
         await channel.send(
             embed=Embed(title="Nice Try", description=f"Slow down there <@{payload.user_id}>.\nYou can't give yourself watermelons 🍉.", color=0xff0000)
         )
-        return
-    if message.author.id == 753351906608283678:
         return
     if str(payload.emoji) != '🍉':
         return
@@ -38,6 +38,26 @@ async def on_raw_reaction_add(payload: RawReactionActionEvent):
         data[str(message.author.id)] = 1
 
     print(data)
+
+    with open('data.json', 'w') as f:
+        json.dump(data, f)
+
+
+@bot.event
+async def on_raw_reaction_remove(payload):
+    channel = await bot.fetch_channel(payload.channel_id)
+    message = await channel.fetch_message(payload.message_id)
+    if message.author.id == 753351906608283678:
+        return
+    if str(payload.emoji) != '🍉':
+        return
+    with open('data.json', 'r') as f:
+        data = json.load(f)
+
+    try:
+        data[str(message.author.id)] = data[str(message.author.id)] - 1
+    except:
+        data[str(message.author.id)] = 0
 
     with open('data.json', 'w') as f:
         json.dump(data, f)
