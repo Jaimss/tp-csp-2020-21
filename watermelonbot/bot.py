@@ -16,7 +16,7 @@ async def on_ready():
 
 @bot.event
 async def on_raw_reaction_add(payload: RawReactionActionEvent):
-    channel = await bot.fetch_channel(payload.channel_id)
+    channel = await bot.fetch_channel(payload.channel_ioid)
     message = await channel.fetch_message(payload.message_id)
     if message.author.id == 753351906608283678:
         return
