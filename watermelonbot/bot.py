@@ -16,7 +16,7 @@ async def on_ready():
 
 @bot.event
 async def on_raw_reaction_add(payload: RawReactionActionEvent):
-    channel = await bot.fetch_channel(payload.channel_ioid)
+    channel = await bot.fetch_channel(payload.channel_id)
     message = await channel.fetch_message(payload.message_id)
     if message.author.id == 753351906608283678:
         return
@@ -27,46 +27,55 @@ async def on_raw_reaction_add(payload: RawReactionActionEvent):
         return
     if str(payload.emoji) != '🍉':
         return
-    with open('data.json', 'r') as f:
-        data = json.load(f)
-
-    print(data)
+    with open('received.json', 'r') as f:
+        received = json.load(f)
+    with open('given.json', 'r') as f:
+        given = json.load(f)
 
     try:
-        data[str(message.author.id)] = data[str(message.author.id)] + 1
+        received[str(message.author.id)] = received[str(message.author.id)] + 1
+        given[str(payload.user_id)] = given[str(payload.user_id)] + 1
     except:
-        data[str(message.author.id)] = 1
+        received[str(message.author.id)] = 1
+        given[str(payload.user_id)] = 1
 
-    print(data)
-
-    with open('data.json', 'w') as f:
-        json.dump(data, f)
+    with open('received.json', 'w') as f:
+        json.dump(received, f)
+    with open('given.json', 'w') as f:
+        json.dump(given, f)
 
 
 @bot.event
-async def on_raw_reaction_remove(payload):
+async def on_raw_reaction_remove(payload: RawReactionActionEvent):
     channel = await bot.fetch_channel(payload.channel_id)
     message = await channel.fetch_message(payload.message_id)
     if message.author.id == 753351906608283678:
         return
     if str(payload.emoji) != '🍉':
         return
-    with open('data.json', 'r') as f:
-        data = json.load(f)
+    with open('received.json', 'r') as f:
+        received = json.load(f)
+    with open('given.json', 'r') as f:
+        given = json.load(f)
 
     try:
-        data[str(message.author.id)] = data[str(message.author.id)] - 1
+        received[str(message.author.id)] = received[str(message.author.id)] - 1
+        given[str(payload.user_id)] = given[str(payload.user_id)] - 1
     except:
-        data[str(message.author.id)] = 0
+        received[str(message.author.id)] = 0
+        given[str(payload.user_id)] = 0
 
-    with open('data.json', 'w') as f:
-        json.dump(data, f)
+    with open('received.json', 'w') as f:
+        json.dump(received, f)
+    with open('given.json', 'w') as f:
+        json.dump(given, f)
 
 
 @bot.command()
 async def writefile(ctx):
     await ctx.message.delete()
-    d = {}
+    received = {}
+    given = {}
     x = 0
     y = 0
     async for m in ctx.channel.history(limit=None):
@@ -78,31 +87,57 @@ async def writefile(ctx):
         for r in m.reactions:
             if r.emoji == '🍉':
                 try:
-                    d[m.author.id] = d[m.author.id] + r.count
+                    received[m.author.id] = received[m.author.id] + r.count
+                    async for user in r.users():
+                        given[user.id] = given[user.id] + 1
                 except:
-                    d[m.author.id] = r.count
+                    received[m.author.id] = r.count
+                    async for user in r.users():
+                        given[user.id] = 1
         y += 1
         print(f'{x} + {y}')
 
     # dump to the file
-    with open('data.json', 'w') as f:
-        json.dump(d, f)
+    with open('received.json', 'w') as f:
+        json.dump(received, f)
+    with open('given.json', 'w') as f:
+        json.dump(given, f)
+
+    print('done!')
 
 
 @bot.command()
 async def wb(ctx):
     await ctx.message.delete()
-    with open('data.json', 'r') as f:
-        data = json.load(f)
+    with open('received.json', 'r') as f:
+        received = json.load(f)
+    with open('given.json', 'r') as f:
+        given = json.load(f)
 
     emb = Embed(title='Watermelons', description=f'Channel: {ctx.channel.mention}', color=0xFF476F)
-    for (user, count) in data.items():
+
+    final_received = ""
+    final_given = ""
+
+    for (user, count) in received.items():
         m = await bot.g.fetch_member(int(user))
-        emb.add_field(
-            name=m.nick,
-            value=f'{m.mention} has {count} watermelon(s). 🍉',
-            inline=True
-        )
+        final_received += f'{m.mention}: `{count}`\n'
+
+    for (user, count) in given.items():
+        m = await bot.g.fetch_member(int(user))
+        final_given += f'{m.mention}: `{count}`\n'
+
+    emb.add_field(
+        name="Watermelons Received",
+        value=final_received,
+        inline=True
+    )
+    emb.add_field(
+        name="Watermelons Given",
+        value=final_given,
+        inline=True
+    )
+
     m = await ctx.channel.send(embed=emb)
     await m.add_reaction('🍉')
 
