@@ -20,12 +20,12 @@ async def on_raw_reaction_add(payload: RawReactionActionEvent):
     message = await channel.fetch_message(payload.message_id)
     if message.author.id == 753351906608283678:
         return
+    if str(payload.emoji) != '🍉':
+        return
     if payload.user_id == message.author.id:
         await channel.send(
             embed=Embed(title="Nice Try", description=f"Slow down there <@{payload.user_id}>.\nYou can't give yourself watermelons 🍉.", color=0xff0000)
         )
-        return
-    if str(payload.emoji) != '🍉':
         return
     with open('received.json', 'r') as f:
         received = json.load(f)
