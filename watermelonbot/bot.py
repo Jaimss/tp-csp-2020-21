@@ -7,7 +7,6 @@ bot = Bot(command_prefix='w.')
 
 bot.g = None
 
-
 @bot.event
 async def on_ready():
     bot.g = await bot.fetch_guild(694220562364366848)

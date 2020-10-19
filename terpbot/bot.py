@@ -8,7 +8,6 @@ from secrets import get_token
 
 bot = commands.Bot('-')
 
-
 @bot.event
 async def on_ready():
     act = discord.CustomActivity('Fuck you!')
