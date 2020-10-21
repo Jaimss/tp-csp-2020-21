@@ -41,7 +41,7 @@ while num_dots <= 2:
     # position next dots
     x_pos = y_pos + 25
     x_pos = x_pos + 5
-    num_dot = num_dots + 1
+    num_dots += 1
 
 ladybug.hideturtle()
 
