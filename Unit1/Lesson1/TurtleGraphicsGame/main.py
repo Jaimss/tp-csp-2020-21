@@ -14,12 +14,12 @@ def dragging(x, y):
     t.ondrag(dragging)
 
 
-def clickright(x, y):
+def right_click(x, y):
     """Clear the screen"""
     t.clear()
 
 
-def clickleft(x, y):
+def left_click(x, y):
     """pen up and goto a position"""
     t.penup()
     t.goto(x, y)
@@ -27,7 +27,7 @@ def clickleft(x, y):
 
 
 def middle_click(x, y):
-    """Draw a straight line with a middle click"""
+    """Draw a straight line with two middle clicks"""
     global line_pos_1
     if line_pos_1 is None:
         line_pos_1 = x, y
@@ -43,8 +43,8 @@ def middle_click(x, y):
 turtle.listen()
 
 t.ondrag(dragging)
-turtle.onscreenclick(clickright, 3)
-turtle.onscreenclick(clickleft)
+turtle.onscreenclick(right_click, 3)
+turtle.onscreenclick(left_click)
 turtle.onscreenclick(middle_click, 2)
 
 screen.mainloop()
