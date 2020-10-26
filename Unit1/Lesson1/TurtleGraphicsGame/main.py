@@ -43,8 +43,8 @@ def middle_click(x, y):
 turtle.listen()
 
 t.ondrag(dragging)
-turtle.onscreenclick(right_click, 3)
 turtle.onscreenclick(left_click)
 turtle.onscreenclick(middle_click, 2)
+turtle.onscreenclick(right_click, 3)
 
 screen.mainloop()
