@@ -9,6 +9,7 @@ def sum_old(x, y):
         sum += i
     return sum
 
+
 listnum = [(1, 200), (3, 500), (1,200000), (654363, 634575364164723)]
 
 for n in listnum:
