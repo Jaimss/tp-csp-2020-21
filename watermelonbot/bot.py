@@ -7,6 +7,7 @@ bot = Bot(command_prefix='w.')
 
 bot.g = None
 
+
 @bot.event
 async def on_ready():
     bot.g = await bot.fetch_guild(694220562364366848)
@@ -23,7 +24,7 @@ async def on_raw_reaction_add(payload: RawReactionActionEvent):
         return
     if payload.user_id == message.author.id:
         await channel.send(
-            embed=Embed(title="Nice Try", description=f"Slow down there <@{payload.user_id}>.\nYou can't give yourself watermelons 🍉.", color=0xff0000)
+            embed=Embed(title='Nice Try', description=f'Slow down there <@{payload.user_id}>.\nYou can\'t give yourself watermelons 🍉.', color=0xff0000)
         )
         return
     with open('received.json', 'r') as f:

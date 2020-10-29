@@ -2,6 +2,7 @@ import turtle as trtl
 
 painter = trtl.Turtle()
 
+
 def goto_nodraw(p, x, y):
     p.penup()
     p.goto(x, y)
@@ -23,5 +24,3 @@ painter.goto(-15, -20)
 
 sc = trtl.Screen()
 sc.mainloop()
-
-
