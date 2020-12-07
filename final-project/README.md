@@ -1,6 +1,19 @@
 # Final Project
 Creating a Custom Encoder (2.3.1)
 
+---
+
+## Solution
+I created an encoder/decoder in `util.py` where letters are modified by a random 'change amount', which is then sent as the first part of the encoded message. Those letters are
+turned into integers and then their respective binary. The binary message is sent over, and the decoder does everything in reverse.
+
+The graphical part:
+- Users input the message via a GUI.
+- The GUI creates an image with circles every x pixels.
+- If the circles are BLUE its a 1, if they are RED its a 0.
+
+---
+
 ### To Run the Program
 In the root project directory execute
 - `pip3 install -r requirements.txt`
