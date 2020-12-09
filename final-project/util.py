@@ -24,7 +24,7 @@ def encode(message: str, change_amount: int) -> list:
     # the first thing in the final message will be a binary representation of
     # the amount each character is changed by +7
     modified_change = change_amount + 7
-    final_msg.append(int_to_binary(modified_change))
+    final_msg.append(int_to_binary(change_amount))
     for c in message:
         # for every character swap it with one three to the left
         num = char_to_int(c)
@@ -40,7 +40,7 @@ def decode(message: list) -> str:
     """decode an encoded message"""
     # get the amount each number has changed and remove that from the list
     modified_change_amt = message.pop(0)
-    change_amount = binary_to_int(modified_change_amt)
+    change_amount = binary_to_int(modified_change_amt) + 7
 
     # the final message string
     final_msg = ''
