@@ -5,6 +5,8 @@ import numpy as np
 
 message = []
 
+print('[DECODER] Decoding Message...')
+
 # loop through all videos
 videos = os.listdir('./message_output')
 for video_title in sorted(videos):
@@ -35,8 +37,8 @@ for video_title in sorted(videos):
 
     capture.release()
     cv2.destroyAllWindows()
-
-print(message)
+    print(f'[DECODER] Video {video_title} complete.')
 
 decoded = decode(message)
+print('[DECODER] All Done! Your message is:')
 print(decoded)
