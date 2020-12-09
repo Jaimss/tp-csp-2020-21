@@ -30,8 +30,8 @@ for video_title in sorted(videos):
         else:
             bin_str += '0'
 
-        # add the binary to the message
-        message.append(int(bin_str))
+    # add the binary to the message
+    message.append(int(bin_str))
 
     capture.release()
     cv2.destroyAllWindows()
