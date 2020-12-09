@@ -36,6 +36,7 @@ def encode(message: str, change_amount: int) -> list:
 
     return final_msg
 
+
 def decode(message: list) -> str:
     """decode an encoded message"""
     # get the amount each number has changed and remove that from the list
