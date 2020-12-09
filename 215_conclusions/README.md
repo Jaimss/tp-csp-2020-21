@@ -1,7 +1,7 @@
 # 2.1.5 Conclusions Assignment
 
 1.
-    a. Code converted in `1a.py`
+    - a. Code converted in `1a.py`
     - b. Code converted in `1b.py`
     - c. Code converted in `1c.py`
 2.
