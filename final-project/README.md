@@ -8,9 +8,11 @@ I created an encoder/decoder in `util.py` where letters are modified by a random
 turned into integers and then their respective binary. The binary message is sent over, and the decoder does everything in reverse.
 
 The graphical part:
-- Users input the message via a GUI.
-- The GUI creates an image with circles every x pixels.
-- If the circles are BLUE its a 1, if they are RED its a 0.
+- Users input the message via the command line.
+- Video Files are created for each individual character.
+- Everything runs at a certain frame rate so it can be properly decoded.
+- The decoder opens the videos in order and plays them back watching for changes in color and recording the appropriate binary.
+- The final message is displayed on screen.
 
 ---
 
