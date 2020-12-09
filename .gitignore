@@ -1,8 +1,7 @@
-.idea
-venv
+# ignore pycache
 __pycache__
-school
-final-project/venv
+
+# final project stuff
+# ignore the folder of videos
 final-project/message_output
-james-random-stuff
 
