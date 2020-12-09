@@ -51,3 +51,34 @@ Additional Requirements:
 #### Problems
 - 1 & 2
     - Run encode & decode to get a gif file. When you decode it the message is `changeme` as well as a lot of binary.
+    - Encoder writes squares to the screen, decoder then turns them back into binary.
+- 3 & 4
+    - Comments have been added to the code under the `example` directory.
+- 5
+    - a. You would change the `message` variable to something else or maybe user input
+    - b. change the `drawer.shape` line
+    - c. change the `ImageGrab.....save()` line to use a different name than `output.gif`
+    - d. change the `drawer.color` line to use red not blue
+    - e. change the line where you check `if g < 254` to check for red instead of blue
+    - f. change to `drawer.goto` line to go to a different location
+- 6
+    - N/a
+- 7,8,9,10 & 11
+    - Ideas
+        - use audio
+        - use video
+        - use images
+    - Pick an idea
+        - im gonna use video to make it work
+        - binary will be displayed using colors
+        - the decoder will watch the videos and "read" the colors
+- 12, 13, 14
+    - there will be encoding/decoding algorithms
+    - algorithms for converting letters to binary/integers
+    - binary will be sent using video form and read
+    - everything above is feasable
+- 17,18,19,20,21
+    - met all of my goals and requirements for the encoder/decoder
+    - tested all things multiple times like user input or different errors that occured and fixed them
+- all remaining quesitons
+    - will be answered in the video/code

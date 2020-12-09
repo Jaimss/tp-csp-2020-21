@@ -35,10 +35,12 @@ for video_title in sorted(videos):
     # add the binary to the message
     message.append(int(bin_str))
 
+    # release video
     capture.release()
     cv2.destroyAllWindows()
     print(f'[DECODER] Video {video_title} complete.')
 
+# send the decoded message
 decoded = decode(message)
 print('[DECODER] All Done! Your message is:')
 print(decoded)
