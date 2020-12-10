@@ -12,6 +12,14 @@ while not valid:
         valid = True
     except ValueError:
         pass
+# get user input for framerate of video
+valid = False
+while not valid:
+    try:
+        fps = int(input('[ENCODER] Specify the video frame rate (This will only determine how easy it is to see the change of colors): '))
+        valid = True
+    except ValueError:
+        pass
 
 print('[ENCODER] Working...')
 
@@ -32,7 +40,7 @@ for (i, binary_char) in enumerate(binary_data):
     width = 300
 
     # make the video
-    video = cv2.VideoWriter(video_title, cv2.VideoWriter_fourcc('M','J','P','G'), fps=30, frameSize=(width, height))
+    video = cv2.VideoWriter(video_title, cv2.VideoWriter_fourcc('M','J','P','G'), fps=fps, frameSize=(width, height))
 
     # loop through the different binary digits in the character and
     # add their frames to the video.
