@@ -56,15 +56,15 @@ The graphical part:
 ### To Run the Program
 In the root project directory execute
 - `pip3 install -r requirements.txt`
-  - Note: `pip3 -V` is `20.0.2`
-  - Note: `python3 -V` is `Python 3.8.5`
-Again in the root project directory execute
-- `python3 encode.py`
-- Follow the prompts on screen to encode a message.
-- `python3 decode.py`
-- Will decode the message.
-Additional Requirements:
-- `python3-tk`
+    - Note: `pip3 -V` is `20.0.2`
+    - Note: `python3 -V` is `Python 3.8.5`
+- Again in the root project directory execute
+    - `python3 encode.py`
+    - Follow the prompts on screen to encode a message.
+    - `python3 decode.py`
+    - Will decode the message.
+- Additional Requirements:
+    - `python3-tk`
 
 ---
 
