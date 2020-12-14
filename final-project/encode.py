@@ -35,7 +35,6 @@ for (i, binary_char) in enumerate(binary_data):
     # each character will be contained in one video file
     video_title = f'./message_output/{"{0:0=3d}".format(i)}.avi'
 
-    # 1080p
     height = 168
     width = 300
 
